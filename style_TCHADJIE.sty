@@ -1,0 +1,547 @@
+% ==============================================================================
+% Fichier     : style_TCHADJIE.sty
+% Titre       : Feuille de style
+% Auteur      : TCHADJIE TOUKAM LARRY ANDERSON
+% Cours       : Analyse de Risque, Audit et Gestion de Crise
+% ==============================================================================
+
+\ProvidesPackage{style_TCHADJIE}[2026/03/21 Style Pour cours Analyse des risques]
+
+% ==============================================================================
+% I. PACKAGES
+% ==============================================================================
+\RequirePackage[T1]{fontenc}
+\RequirePackage[utf8]{inputenc}
+\RequirePackage[french]{babel}
+\RequirePackage{helvet}
+\renewcommand{\familydefault}{\sfdefault}
+\RequirePackage[protrusion=true,expansion=false]{microtype}
+
+\RequirePackage[
+    top=2.2cm, bottom=2.6cm,
+    left=2.4cm, right=2.4cm,
+    headheight=16pt
+]{geometry}
+
+\RequirePackage[dvipsnames,table,x11names]{xcolor}
+\RequirePackage{graphicx}
+\RequirePackage{float}
+\RequirePackage{tikz}
+\usetikzlibrary{shapes.geometric,arrows.meta,positioning,shadows,calc,fit}
+
+\RequirePackage{booktabs}
+\RequirePackage{tabularx}
+\RequirePackage{multirow}
+\RequirePackage{array}
+\RequirePackage{colortbl}
+\RequirePackage{longtable}
+
+\RequirePackage[most]{tcolorbox}
+\tcbuselibrary{breakable,skins}
+
+\RequirePackage{enumitem}
+\RequirePackage{fancyhdr}
+\RequirePackage{setspace}
+\RequirePackage{titlesec}
+\RequirePackage{titletoc}
+\RequirePackage{pifont}
+\RequirePackage{marvosym}
+\RequirePackage{ragged2e}
+\RequirePackage{soul}
+\RequirePackage{mdframed}
+\RequirePackage{afterpage}
+
+\RequirePackage[
+    colorlinks=true,
+    linkcolor=ChartePrimaire,
+    urlcolor=CharteVif,
+    citecolor=CharteOr,
+    bookmarks=true,
+    bookmarksnumbered=true,
+    pdftitle={Charte de Gouvernance LiZbiZ},
+    pdfauthor={Consultant junior GES4062}
+]{hyperref}
+
+% ==============================================================================
+% II. PALETTE CHROMATIQUE
+% ==============================================================================
+\definecolor{ChartePrimaire}{RGB}{42,74,61}
+\definecolor{CharteSecondaire}{RGB}{76,129,105}
+\definecolor{CharteVif}{RGB}{38,166,91}
+\definecolor{CharteOr}{RGB}{210,165,50}
+\definecolor{CharteArdoise}{RGB}{58,68,80}
+\definecolor{CharteGrisBleu}{RGB}{100,116,139}
+
+\definecolor{CharteDefFond}{RGB}{236,247,240}
+\definecolor{CharteRoleFond}{RGB}{255,251,230}
+\definecolor{CharteRoleBord}{RGB}{190,140,30}
+\definecolor{CharteCritFond}{RGB}{255,240,240}
+\definecolor{CharteCritBord}{RGB}{170,50,50}
+\definecolor{CharteActFond}{RGB}{230,240,255}
+\definecolor{CharteActBord}{RGB}{70,110,180}
+\definecolor{CharteNeutFond}{RGB}{245,246,247}
+\definecolor{CharteNeutBord}{RGB}{150,165,180}
+
+\definecolor{RACIEntete}{RGB}{42,74,61}
+\definecolor{RACIPair}{RGB}{236,247,240}
+\definecolor{RACIImpair}{RGB}{250,253,251}
+\definecolor{RACIResponsable}{RGB}{30,140,70}
+\definecolor{RACIAccountable}{RGB}{180,80,20}
+\definecolor{RACIConsulted}{RGB}{60,100,170}
+\definecolor{RACIInformed}{RGB}{130,145,160}
+\definecolor{RACIVide}{RGB}{220,220,220}
+
+% ==============================================================================
+% III. TYPOGRAPHIE
+% ==============================================================================
+\setstretch{1.2}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.6ex}
+
+% ==============================================================================
+% IV. TITRES
+% ==============================================================================
+\titleformat{\section}
+    {\normalfont\large\bfseries\color{ChartePrimaire}}{}
+    {0pt}
+    {\colorbox{ChartePrimaire}{\color{white}\,\thesection\,}\hspace{0.6em}}
+    [\vspace{-0.5ex}{\color{CharteVif}\titlerule[1.5pt]}\vspace{0.5ex}]
+\titlespacing*{\section}{0pt}{1.8ex plus .5ex}{0.8ex plus .3ex}
+
+\titleformat{\subsection}
+    {\normalfont\normalsize\bfseries\color{CharteSecondaire}}
+    {\color{CharteVif}\rule[-2pt]{3pt}{11pt}\hspace{0.5em}\thesubsection}
+    {0.5em}{}
+\titlespacing*{\subsection}{0pt}{1.2ex plus .4ex}{0.4ex plus .2ex}
+
+\titleformat{\subsubsection}
+    {\normalfont\small\bfseries\color{CharteGrisBleu}}
+    {\thesubsubsection}{0.5em}{}
+\titlespacing*{\subsubsection}{0pt}{0.8ex}{0.2ex}
+
+% ==============================================================================
+% V. EN-TÊTES / PIEDS DE PAGE
+% ==============================================================================
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{1.5pt}
+\renewcommand{\headrule}{%
+    \color{ChartePrimaire}\hrule width\headwidth height 1.5pt}
+\renewcommand{\footrulewidth}{0.4pt}
+\renewcommand{\footrule}{%
+    \color{CharteVif}\hrule width\headwidth height 0.4pt}
+\fancyhead[L]{%
+    \small\color{CharteSecondaire}%
+    \textit{Charte de Gouvernance LiZbiZ}}
+\fancyhead[R]{%
+    \small\color{CharteGrisBleu}\textit{3.4.3 --- Première Mission}}
+\fancyfoot[C]{\color{CharteGrisBleu}\small\thepage}
+\fancyfoot[L]{%
+    \small\color{CharteGrisBleu}%
+    \textit{Document confidentiel - COMEX}}
+\fancyfoot[R]{\small\color{CharteVif}v1.0 --- 2026}
+
+\fancypagestyle{plain}{%
+    \fancyhf{}
+    \renewcommand{\headrulewidth}{0pt}
+    \renewcommand{\footrulewidth}{0pt}
+    \fancyfoot[C]{\color{CharteGrisBleu}\small\thepage}
+}
+
+% ==============================================================================
+% VI. BOÎTES TCOLORBOX
+% ==============================================================================
+
+\newtcolorbox{boxrole}[2][]{%
+    enhanced,breakable,
+    colback=CharteRoleFond,colframe=CharteRoleBord,
+    fonttitle=\bfseries\color{white}\small,
+    title={\ding{80}\quad #2},
+    attach boxed title to top left={yshift=-2.5mm,xshift=5mm},
+    boxed title style={colback=CharteRoleBord,rounded corners=2pt,boxrule=0pt},
+    arc=2pt,sharp corners=south,boxrule=0.6pt,
+    left=8pt,right=8pt,top=9pt,bottom=7pt,#1}
+
+\newtcolorbox{boxcritique}[1][]{%
+    enhanced,breakable,
+    colback=CharteCritFond,colframe=CharteCritBord,
+    fonttitle=\bfseries\color{white}\small,
+    title={\ding{72}\quad Point Critique},
+    attach boxed title to top left={yshift=-2.5mm,xshift=5mm},
+    boxed title style={colback=CharteCritBord,rounded corners=2pt,boxrule=0pt},
+    arc=2pt,sharp corners=south,boxrule=0.6pt,
+    left=8pt,right=8pt,top=9pt,bottom=7pt,#1}
+
+\newtcolorbox{boxmission}[1][]{%
+    enhanced,breakable,
+    colback=CharteDefFond,colframe=ChartePrimaire,
+    fonttitle=\bfseries\color{white}\small,
+    title={\ding{110}\quad Contexte de Mission --- Entreprise LiZbiZ},
+    attach boxed title to top left={yshift=-2.5mm,xshift=5mm},
+    boxed title style={colback=ChartePrimaire,rounded corners=2pt,boxrule=0pt},
+    arc=2pt,sharp corners=south,boxrule=0.8pt,
+    left=8pt,right=8pt,top=9pt,bottom=7pt,#1}
+
+\newtcolorbox{boxaction}[1][]{%
+    enhanced,breakable,
+    colback=CharteActFond,colframe=CharteActBord,
+    fonttitle=\bfseries\color{white}\small,
+    title={\ding{51}\quad Recommandation},
+    attach boxed title to top left={yshift=-2.5mm,xshift=5mm},
+    boxed title style={colback=CharteActBord,rounded corners=2pt,boxrule=0pt},
+    arc=2pt,sharp corners=south,boxrule=0.6pt,
+    left=8pt,right=8pt,top=9pt,bottom=7pt,#1}
+
+\newtcolorbox{boxnote}[1][]{%
+    enhanced,breakable,
+    colback=CharteNeutFond,colframe=CharteNeutBord,
+    fonttitle=\bfseries\color{CharteArdoise}\small,
+    title={\ding{108}\quad Note du consultant},
+    attach boxed title to top left={yshift=-2.5mm,xshift=5mm},
+    boxed title style={colback=CharteNeutBord,rounded corners=2pt,boxrule=0pt},
+    arc=2pt,sharp corners=south,boxrule=0.5pt,
+    left=8pt,right=8pt,top=9pt,bottom=7pt,#1}
+
+\newtcolorbox{boxarticle}[2][]{%
+    enhanced,breakable,
+    colback=white,colframe=ChartePrimaire,
+    fonttitle=\bfseries\color{white}\normalsize,
+    title={\ding{70}\quad Article #2},
+    attach boxed title to top left={yshift=-3mm,xshift=6mm},
+    boxed title style={colback=ChartePrimaire,rounded corners=2pt,boxrule=0pt},
+    arc=3pt,sharp corners=south,boxrule=1.0pt,
+    left=10pt,right=10pt,top=10pt,bottom=8pt,
+    shadow={1.5mm}{-1.5mm}{0mm}{black!12},#1}
+
+\newtcolorbox{boxscope}[1][]{%
+    enhanced,breakable,
+    colback=white,colframe=CharteGrisBleu,
+    fonttitle=\bfseries\color{CharteGrisBleu}\small,
+    title={\ding{227}\quad Périmètre d'application},
+    attach boxed title to top left={yshift=-2.5mm,xshift=5mm},
+    boxed title style={colback=CharteNeutFond,colframe=CharteGrisBleu,
+        rounded corners=2pt,boxrule=0.5pt},
+    arc=2pt,boxrule=0.5pt,
+    dash pattern=on 4pt off 2pt,
+    left=8pt,right=8pt,top=9pt,bottom=7pt,#1}
+
+% ==============================================================================
+% VII. COMMANDES RACI
+% ==============================================================================
+\newcommand{\raciR}{%
+    \cellcolor{RACIResponsable!25}\textbf{\color{RACIResponsable}R}}
+\newcommand{\raciA}{%
+    \cellcolor{RACIAccountable!20}\textbf{\color{RACIAccountable}A}}
+\newcommand{\raciC}{%
+    \cellcolor{RACIConsulted!20}\textbf{\color{RACIConsulted}C}}
+\newcommand{\raciI}{%
+    \cellcolor{RACIInformed!30}\textbf{\color{CharteGrisBleu}I}}
+\newcommand{\raciVide}{%
+    \cellcolor{RACIVide}{\color{RACIVide}{-}}}
+
+\newcommand{\legendeRACI}{%
+    \vspace{0.3em}\noindent\footnotesize
+    \colorbox{RACIResponsable!25}{%
+        \textbf{\color{RACIResponsable}R}}~Réalise\quad
+    \colorbox{RACIAccountable!20}{%
+        \textbf{\color{RACIAccountable}A}}~Décide (Accountable)\quad
+    \colorbox{RACIConsulted!20}{%
+        \textbf{\color{RACIConsulted}C}}~Consulté\quad
+    \colorbox{RACIInformed!30}{%
+        \textbf{\color{CharteGrisBleu}I}}~Informé\quad
+    \colorbox{RACIVide}{-}~Non concerné
+    \vspace{0.3em}}
+
+% ==============================================================================
+% VIII. COMMANDES UTILITAIRES
+% ==============================================================================
+\newcommand{\terme}[1]{\textcolor{ChartePrimaire}{\textit{\underline{#1}}}}
+\newcommand{\sigle}[1]{\textsc{#1}}
+\newcommand{\norme}[1]{\textbf{\color{CharteOr}[#1]}}
+
+\newcommand{\statutVacant}{%
+    \textcolor{CharteCritBord}{\ding{55}~\textbf{VACANT}}}
+\newcommand{\statutActif}{%
+    \textcolor{RACIResponsable}{\ding{51}~\textbf{EN POSTE}}}
+\newcommand{\statutInterim}{%
+    \textcolor{RACIAccountable}{\ding{115}~\textbf{INTÉRIM}}}
+
+\newcommand{\bandeauVersion}[3]{%
+    \begin{tcolorbox}[
+        enhanced,
+        colback=ChartePrimaire,colframe=ChartePrimaire,coltext=white,
+        arc=0pt,sharp corners,boxrule=0pt,
+        left=12pt,right=12pt,top=5pt,bottom=5pt]
+    \small
+    \textbf{Version :} #1\quad
+    \textbf{Date :} #2\quad
+    \textbf{Statut :} #3\quad
+    \hfill\textit{Document confidentiel --- Usage interne}
+    \end{tcolorbox}}
+
+\newcommand{\separateur}{%
+    \begin{center}
+    \begin{tikzpicture}
+        \draw[ChartePrimaire,line width=0.5pt](0,0)--(2.5,0);
+        \fill[CharteVif](2.7,0)circle(2.2pt);
+        \fill[CharteOr] (3.0,0)circle(2.2pt);
+        \fill[CharteVif](3.3,0)circle(2.2pt);
+        \draw[ChartePrimaire,line width=0.5pt](3.5,0)--(6.0,0);
+    \end{tikzpicture}
+    \end{center}
+    \vspace{0.3ex}}
+
+\newcounter{numclause}[section]
+\newcommand{\clause}[1]{%
+    \stepcounter{numclause}%
+    \vspace{0.5ex}\noindent
+    \begin{tikzpicture}[baseline=(n.base)]
+        \fill[ChartePrimaire](0,0)circle(0.22cm);
+        \node[white,font=\tiny\bfseries](n)at(0,0){\thenumclause};
+    \end{tikzpicture}
+    \hspace{0.4em}\textbf{\color{CharteArdoise}#1}
+    \par\vspace{0.3ex}}
+
+% ==============================================================================
+% IX. LISTES
+% ==============================================================================
+\setlist[itemize,1]{
+    leftmargin=1.6em,
+    label={\color{CharteVif}\ding{227}},
+    itemsep=0.3ex,topsep=0.3ex}
+\setlist[itemize,2]{
+    leftmargin=1.4em,
+    label={\color{CharteSecondaire}\ding{118}},
+    itemsep=0.2ex}
+\setlist[enumerate,1]{
+    leftmargin=2em,
+    label={\color{ChartePrimaire}\bfseries\arabic*.},
+    itemsep=0.3ex,topsep=0.3ex}
+\setlist[enumerate,2]{
+    leftmargin=1.8em,
+    label={\color{CharteSecondaire}\alph*)},
+    itemsep=0.2ex}
+
+% ==============================================================================
+% X. TABLEAUX
+% ==============================================================================
+\newcommand{\enteteTableau}[1]{%
+    \rowcolor{RACIEntete}\color{white}\bfseries\small #1}
+
+% ==============================================================================
+% XI. PARAMÈTRES FINAUX
+% ==============================================================================
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{2}
+\hyphenpenalty=900
+\exhyphenpenalty=900
+\color{CharteArdoise}
+
+% 
+% ==============================================================================
+% XII. PAGE DE GARDE INSTITUTIONNELLE (ENSPY)
+% ==============================================================================
+%
+% \pagegardeENSP{logo}{titre cours}{intitulé exercice}
+%               {matricule}{nom étudiant}{note}
+%               {nom superviseur}{année académique}
+%
+\newcommand{\pagegardeENSP}[8]{%
+    \thispagestyle{empty}%
+    %
+    % --- Bande supérieure ---
+    \begin{tikzpicture}[remember picture,overlay]
+        \fill[ChartePrimaire]
+            (current page.north west)rectangle
+            ([yshift=-5pt]current page.north east);
+        \fill[CharteOr]
+            ([yshift=-5pt]current page.north west)rectangle
+            ([yshift=-11pt]current page.north east);
+    \end{tikzpicture}%
+    \vspace*{0.25cm}%
+    %
+    % --- En-tête : bloc gauche | logo centré | bloc droit ---
+    % Les deux blocs texte sont collés aux bords, le logo est au milieu.
+    % Toute la ligne est construite sur une seule rangée \makebox pleine largeur.
+    %
+    \noindent
+    \makebox[\textwidth][s]{%
+        %
+        % -- Bloc gauche (FR) aligné à gauche --
+        \begin{minipage}[t]{0.36\textwidth}
+            \raggedright
+            \footnotesize\color{CharteArdoise}
+            RÉPUBLIQUE DU CAMEROUN\\[1pt]
+            \textit{\color{CharteGrisBleu}Paix -- Travail -- Patrie}\\[1pt]
+            \textcolor{CharteVif}{$\star\!\star\!\star$}\\[1pt]
+            MINISTÈRE DE\\
+            L'ENSEIGNEMENT SUPÉRIEUR\\[1pt]
+            \textcolor{CharteVif}{$\star\!\star\!\star$}\\[1pt]
+            \textbf{\color{ChartePrimaire}UNIVERSITÉ DE YAOUNDÉ I}\\[1pt]
+            \textcolor{CharteVif}{$\star\!\star\!\star$}\\[1pt]
+            \textbf{\color{ChartePrimaire}ÉCOLE NATIONALE\\
+                SUPÉRIEURE POLYTECHNIQUE}\\[1pt]
+            \textcolor{CharteVif}{$\star\!\star\!\star$}\\[1pt]
+            DÉPARTEMENT DE GÉNIE\\
+            INFORMATIQUE\\[1pt]
+            \textcolor{CharteVif}{$\star\!\star\!\star$}
+        \end{minipage}%
+        %
+        % -- Logo centré --
+        \begin{minipage}[t]{0.22\textwidth}
+            \centering
+            \vspace{0pt}
+            \hspace{0.5cm} % Décalage vers la droite
+            \includegraphics[width=\linewidth,height=2.8cm,
+                keepaspectratio]{#1}
+        \end{minipage}%
+        %
+        % -- Bloc droit (EN) aligné à droite --
+        \begin{minipage}[t]{0.36\textwidth}
+            \hspace*{1.3cm}%
+        \begin{minipage}[t]{\dimexpr\linewidth-0.4cm\relax}
+            \raggedleft
+            \footnotesize\color{CharteArdoise}
+            REPUBLIC OF CAMEROON\\[1pt]
+            \textit{\color{CharteGrisBleu}Peace -- Work -- Fatherland}\\[1pt]
+            \textcolor{CharteVif}{$\star\!\star\!\star$}\\[1pt]
+            MINISTRY OF HIGHER\\
+            EDUCATION\\[1pt]
+            \textcolor{CharteVif}{$\star\!\star\!\star$}\\[1pt]
+            \textbf{\color{ChartePrimaire}UNIVERSITY OF YAOUNDE I}\\[1pt]
+            \textcolor{CharteVif}{$\star\!\star\!\star$}\\[1pt]
+            \textbf{\color{ChartePrimaire}NATIONAL ADVANCED\\
+                SCHOOL OF ENGINEERING}\\[1pt]
+            \textcolor{CharteVif}{$\star\!\star\!\star$}\\[1pt]
+            COMPUTER ENGINEERING\\
+            DEPARTMENT\\[1pt]
+            \textcolor{CharteVif}{$\star\!\star\!\star$}
+        \end{minipage}%
+\end{minipage}%
+    }%
+    %
+    % --- Filet or (juste en dessous de l'en-tête, pas à côté) ---
+    \vspace{0.25cm}
+    {\color{CharteOr}\rule{\linewidth}{1.2pt}}
+    \vspace{0.3cm}
+    %
+    % --- Titre du cours ---
+    \begin{tcolorbox}[
+        enhanced,
+        colback=white,
+        colframe=CharteOr,
+        boxrule=1.2pt,
+        arc=3pt,
+        sharp corners=south,
+        left=8pt,right=8pt,top=6pt,bottom=6pt,
+        shadow={1.2mm}{-1.2mm}{0mm}{black!10}]
+        \centering
+        \fontsize{15pt}{19pt}\selectfont
+        \bfseries\color{ChartePrimaire}#2
+    \end{tcolorbox}
+    %
+    \vspace{0.4cm}
+    %
+    % --- Bandeau exercice ---
+    \begin{tcolorbox}[
+        enhanced,
+        colback=ChartePrimaire,
+        colframe=ChartePrimaire,
+        arc=3pt,
+        sharp corners=south,
+        boxrule=0pt,
+        left=8pt,right=8pt,top=6pt,bottom=6pt,
+        shadow={1.2mm}{-1.2mm}{0mm}{black!20}]
+        \centering
+        \color{white}\bfseries\fontsize{13pt}{17pt}\selectfont
+        \ding{70}\quad #3 \quad\ding{70}
+    \end{tcolorbox}
+    %
+    \vspace{0.5cm}
+    %
+    % --- Tableau étudiant ---
+    \begin{center}
+    \renewcommand{\arraystretch}{1.5}
+    \begin{tabular}{|
+        >{\centering\arraybackslash}p{0.6cm}|
+        >{\centering\arraybackslash}p{3.2cm}|
+        >{\arraybackslash}p{6.8cm}|
+        >{\centering\arraybackslash}p{1.8cm}|}
+        \hline
+        \rowcolor{RACIEntete}
+        \color{white}\textbf{\small N°} &
+        \color{white}\textbf{\small MATRICULE} &
+        \color{white}\textbf{\small NOMS ET PRÉNOMS} &
+        \color{white}\textbf{\small NOTE} \\
+        \hline
+        \rowcolor{RACIPair}
+        {\small 1} &
+        {\small\color{CharteArdoise}#4} &
+        {\small\color{CharteArdoise}#5} &
+        {\small\color{CharteArdoise}#6} \\
+        \hline
+    \end{tabular}
+    \end{center}
+    %
+    \vspace{0.5cm}
+    %
+    % --- Superviseur ---
+    \begin{center}
+        {\color{CharteGrisBleu}\fontsize{10.5pt}{13pt}\selectfont
+            \textit{Sous la supervision de}}\\[0.35cm]
+        \begin{tcolorbox}[
+            enhanced,
+            colback=CharteDefFond,
+            colframe=CharteSecondaire,
+            boxrule=0.6pt,
+            arc=2pt,
+            sharp corners=south,
+            left=16pt,right=16pt,top=5pt,bottom=5pt,
+            width=0.62\textwidth,
+            halign=center,
+            nobeforeafter]
+            \centering
+            \color{ChartePrimaire}\bfseries
+            \fontsize{11pt}{14pt}\selectfont
+            M.~#7
+        \end{tcolorbox}
+    \end{center}
+    %
+    \vspace{0.5cm}
+    %
+    % --- Année académique ---
+    \begin{center}
+        \begin{tcolorbox}[
+            enhanced,
+            colback=CharteOr!15,
+            colframe=CharteOr,
+            boxrule=0.8pt,
+            arc=3pt,
+            sharp corners=south,
+            left=12pt,right=12pt,top=4pt,bottom=4pt,
+            width=0.40\textwidth,
+            halign=center,
+            nobeforeafter]
+            \centering
+            \color{CharteArdoise}\bfseries
+            \fontsize{11pt}{13pt}\selectfont
+            Année académique #8
+        \end{tcolorbox}
+    \end{center}
+    %
+    % --- Bande inférieure ---
+    \vfill
+    \begin{tikzpicture}[remember picture,overlay]
+        \fill[CharteNeutFond]
+            (current page.south west)rectangle
+            ([yshift=1.2cm]current page.south east);
+        \fill[CharteVif]
+            ([yshift=1.2cm]current page.south west)rectangle
+            ([yshift=1.35cm]current page.south east);
+    \end{tikzpicture}%
+    \newpage
+}
+\endinput
+% ==============================================================================
+% Fin de charte_lizbiz.sty
+% ==============================================================================
